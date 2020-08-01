@@ -1,0 +1,14 @@
+<header>
+  <h3 [textContent]="title">Title</h3>
+  <button mat-button class="save-btn"> Save </button>
+</header>
+<div class="content">
+  <agm-map
+    [latitude]="lat"
+    [longitude]="lng">
+    <agm-marker
+      [latitude]="lat"
+      [longitude]="lng">
+    </agm-marker>
+  </agm-map>
+</div>

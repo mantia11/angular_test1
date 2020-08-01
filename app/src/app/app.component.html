@@ -1,3 +1,18 @@
-Hello Tania's world!
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav [mode]="mode">
+    <button mat-button (click)="sidenav.toggle()"> x </button>
 
-<router-outlet></router-outlet>
+    <!-- List of flights -->
+    <pages-list></pages-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <button mat-button class="sidenav-open-btn" (click)="sidenav.toggle()"> = </button>
+
+    <!-- flight by id or add new flight-->
+    <map></map>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+
