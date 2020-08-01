@@ -1,14 +1,24 @@
 <header>
-  <h3 [textContent]="title">Title</h3>
-  <button mat-button class="save-btn"> Save </button>
+  <h3 [textContent]="flightId ? currentFlight.name : 'Add New'"></h3>
+  <button mat-button class="save-btn" (click)="saveFlight()"> Save </button>
 </header>
 <div class="content">
   <agm-map
-    [latitude]="lat"
-    [longitude]="lng">
-    <agm-marker
-      [latitude]="lat"
-      [longitude]="lng">
+    [latitude]="mapInitPoint.lat"
+    [longitude]="mapInitPoint.lng"
+    [disableDefaultUI]="false"
+    (mapClick)="mapClicked($event)">
+    <agm-polyline [strokeColor]="'red'">
+        <agm-polyline-point *ngFor="let p of currentFlight.path"
+          [latitude]="p.lat"
+          [longitude]="p.lng">
+        </agm-polyline-point>
+    </agm-polyline>
+    <agm-marker *ngFor="let p of currentFlight.path"
+                [latitude]="p.lat"
+                [longitude]="p.lng"
+                [markerDraggable]="true"
+                (dragEnd)="markerDragEnd(p, $event)">
     </agm-marker>
   </agm-map>
 </div>

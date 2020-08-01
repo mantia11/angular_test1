@@ -1,21 +1,26 @@
+@import '../../assets/global.less';
+
+@padd: 20px;
+@height: 56px;
+
 header {
-  height: 56px;
+  height: @height;
   width: 100%;
 
   h3 {
     line-height: 36px;
-    margin: 20px 0 0 100px;
+    margin: @padd 0 0 100px;
   }
 
   .save-btn {
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: @padd;
+    right: @padd;
   }
 }
 
 .content {
-  height: calc(100vh - 76px);
+  height: calc(100vh - @padd - @height);
   width: 100%;
 }
 

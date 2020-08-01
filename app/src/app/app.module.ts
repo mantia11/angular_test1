@@ -10,6 +10,7 @@ import { MatListModule } from '@angular/material/list';
 import { AgmCoreModule } from '@agm/core';
 import { PagesListComponent } from './pages-list/pages-list.component';
 import { MapComponent } from './map/map.component';
+import { DataService } from './services/data.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { MapComponent } from './map/map.component';
       apiKey: ''
     })
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

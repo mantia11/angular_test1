@@ -1,5 +1,9 @@
-<mat-selection-list #shoes [multiple]="false">
-  <mat-list-option *ngFor="let shoe of typesOfShoes" [value]="shoe">
-    {{shoe}}
-  </mat-list-option>
-</mat-selection-list>
+<mat-nav-list>
+  <mat-list-item [textContent]="'Add New'" (click)="navigateTo(0)"></mat-list-item>
+  <mat-list-item *ngFor="let flight of flights">
+    <a matLine (click)="navigateTo(flight.id)" [textContent]="flight.name"></a>
+    <button mat-icon-button (click)="delete(flight.id)">
+      <mat-icon>x</mat-icon>
+    </button>
+  </mat-list-item>
+</mat-nav-list>

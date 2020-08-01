@@ -7,5 +7,10 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./app.component.less']
 })
 export class AppComponent {
+  flightId: number = 0;
   mode = new FormControl('over');
+
+  selectFlight(id: number): void {
+    this.flightId = id;
+  }
 }

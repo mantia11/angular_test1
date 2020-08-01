@@ -1,17 +1,17 @@
-<mat-sidenav-container class="sidenav-container">
+<mat-sidenav-container
+  class="sidenav-container">
   <mat-sidenav #sidenav [mode]="mode">
     <button mat-button (click)="sidenav.toggle()"> x </button>
 
     <!-- List of flights -->
-    <pages-list></pages-list>
+    <pages-list (mapRefresh)="selectFlight($event)" (closeNav)="sidenav.toggle()"></pages-list>
   </mat-sidenav>
 
   <mat-sidenav-content>
     <button mat-button class="sidenav-open-btn" (click)="sidenav.toggle()"> = </button>
 
     <!-- flight by id or add new flight-->
-    <map></map>
-    <router-outlet></router-outlet>
+    <map [flightId]="flightId"></map>
   </mat-sidenav-content>
 </mat-sidenav-container>
 
