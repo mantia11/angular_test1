@@ -11,6 +11,7 @@ import { PubSubService } from '../services/pubsub.service';
 })
 export class PagesListComponent implements OnInit, OnDestroy {
   flights: IFlight[];
+  selectedId: number;
   @Output() readonly closeNav = new EventEmitter();
 
   constructor(private dataService: DataService,
@@ -18,9 +19,11 @@ export class PagesListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.getFlights();
+    this.selectedId = 0;
 
-    this.pubSubService.subscribe('listComponent', this.pubSubService.API.LIST_UPDATE, () => {
+    this.pubSubService.subscribe('listComponent', this.pubSubService.API.LIST_UPDATE, (selected: number) => {
       this.getFlights();
+      this.selectedId = selected;
     });
   }
 
@@ -31,10 +34,15 @@ export class PagesListComponent implements OnInit, OnDestroy {
   delete(id: number): void {
     this.flights = this.flights.filter((item: IFlight) => item.id !== id);
     this.dataService.deleteById(id);
-    this.pubSubService.publish(this.pubSubService.API.MAP_REFRESH, 0);
+    debugger;
+    this.pubSubService.publish(this.pubSubService.API.MAP_REFRESH, this.selectedId !== id ? this.selectedId : 0);
+    if (this.selectedId === id) {
+      this.selectedId = 0;
+    }
   }
 
   navigateTo(id: number): void {
+    this.selectedId = id;
     this.pubSubService.publish(this.pubSubService.API.MAP_REFRESH, id);
     this.closeNav.emit(true);
   }

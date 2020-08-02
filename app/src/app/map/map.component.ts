@@ -56,7 +56,7 @@ export class MapComponent implements OnInit, OnDestroy {
     if (!this.flightId && this.currentFlight.path) {
       this.flightId = this.currentFlight.id;
       this.dataService.addFlight(this.currentFlight);
-      this.pubSubService.publish(this.pubSubService.API.LIST_UPDATE);
+      this.pubSubService.publish(this.pubSubService.API.LIST_UPDATE, this.flightId);
     } else if (this.flightId) {
       this.dataService.saveFlight(this.currentFlight);
     } else {
