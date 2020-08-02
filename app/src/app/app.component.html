@@ -4,7 +4,7 @@
     <button mat-button (click)="sidenav.toggle()"> x </button>
 
     <!-- List of flights -->
-    <pages-list (mapRefresh)="selectFlight($event)" (closeNav)="sidenav.toggle()"></pages-list>
+    <pages-list (closeNav)="sidenav.toggle()"></pages-list>
   </mat-sidenav>
 
   <mat-sidenav-content>

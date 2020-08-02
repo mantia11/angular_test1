@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { flights } from './data.mock';
 import { IFlight } from '../models/flight';
 import { Observable, of } from 'rxjs';
-import {IPoint} from '../models/point';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class DataService {
   private _flights: IFlight[];
 
@@ -27,7 +28,7 @@ export class DataService {
   }
 
   getNewId(): number {
-    return Math.max(...this._flights.map((item: IFlight) => item.id)) + 1;    // or using timestamp or other approach
+    return Math.max(...this._flights.map((item: IFlight) => item.id)) + Date.now();    // or using timestamp or other approach
   }
 
   addFlight(flight: IFlight): void {

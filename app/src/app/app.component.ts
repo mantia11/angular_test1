@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -10,7 +10,5 @@ export class AppComponent {
   flightId: number = 0;
   mode = new FormControl('over');
 
-  selectFlight(id: number): void {
-    this.flightId = id;
-  }
+  constructor(private elementRef: ElementRef) { }
 }

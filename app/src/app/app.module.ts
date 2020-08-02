@@ -11,6 +11,7 @@ import { AgmCoreModule } from '@agm/core';
 import { PagesListComponent } from './pages-list/pages-list.component';
 import { MapComponent } from './map/map.component';
 import { DataService } from './services/data.service';
+import { PubSubService } from './services/pubsub.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { DataService } from './services/data.service';
       apiKey: ''
     })
   ],
-  providers: [DataService],
+  providers: [DataService, PubSubService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
