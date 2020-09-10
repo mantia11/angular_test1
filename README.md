@@ -1,4 +1,7 @@
 # angular_test1
-This is a web app demo on Angular 9 done as a testing task for one company.
+
+Demo app for drone flights management, Angular 9.
+
+https://www.youtube.com/watch?v=_M5vUblz9aU
 
 
